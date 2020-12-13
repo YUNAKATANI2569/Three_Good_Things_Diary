@@ -1,0 +1,13 @@
+投稿diary
+
+		<table>
+			<tbody>
+				<% @diary.each do |diary| %>
+				<tr>
+
+
+					<td><%= diary.body %></td>
+                  <% end %>
+                </tr>
+	        </tbody>
+		</table>

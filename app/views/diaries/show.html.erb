@@ -1,0 +1,31 @@
+ <p id="notice">
+<%=  notice %>
+</p>
+
+
+		<table class="table">
+				<tr>
+					<td><%= @diary.body %></td>
+					<td><%= link_to "Edit", edit_diary_path(@diary), class: "btn-sm btn-success edit_diary_#{@diary.id}" %></td>
+					<td><%= link_to "Destroy", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_diary_#{@diary.id}" %></td>
+       </tr>
+
+
+<% if @diary.favorited_by?(current_user) %>
+<li>
+  <%= link_to favorites_path(@diary), method: :delete do %>
+    <span class="glyphicon glyphicon-heart">
+    <%= @diary.favorites.count %> いいね</span>
+  <% end %>
+</li>
+<% else %>
+<li>
+  <%= link_to favorites_path(@diary), method: :post do %>
+   <span class="glyphicon glyphicon-heart-empty">
+    <%= @diary.favorites.count %> いいね</span>
+  <% end %>
+</li>
+<% end %>
+
+
+

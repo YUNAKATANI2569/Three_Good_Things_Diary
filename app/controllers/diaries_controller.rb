@@ -16,7 +16,7 @@ class DiariesController < ApplicationController
 
   def show
   @diary = Diary.find(params[:id])
-  @comment = Comment.new
+  @comment = DiaryComment.new
   end
 
 

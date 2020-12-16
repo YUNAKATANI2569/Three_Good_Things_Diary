@@ -3,10 +3,9 @@
 		<table>
 			<tbody>
 				<% @diary.each do |diary| %>
-				<tr>
-
 
 					<td><%= diary.body %></td>
+					<td><%= link_to 'Show', diary, class: "show_#{diary.id}" %></td>
                   <% end %>
                 </tr>
 	        </tbody>

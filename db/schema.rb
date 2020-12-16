@@ -10,15 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_11_164334) do
-
-  create_table "comments", force: :cascade do |t|
-    t.text "diary_comment"
-    t.integer "user_id"
-    t.integer "diary_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2020_12_16_060744) do
 
   create_table "diaries", force: :cascade do |t|
     t.text "body"
@@ -26,9 +18,24 @@ ActiveRecord::Schema.define(version: 2020_12_11_164334) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "diary_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
     t.integer "diary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

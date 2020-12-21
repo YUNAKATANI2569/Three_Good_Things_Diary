@@ -10,6 +10,9 @@ class User < ApplicationRecord
  has_many :diary_comments, dependent: :destroy
  has_many :favorites, dependent: :destroy
 
+
+   #-----フォロー機能-------
+
   has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
 
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -29,9 +32,22 @@ class User < ApplicationRecord
   def following?(user)
     followings.include?(user)
   end
+ #---------------
 
 
-# 検索
+
+  #-----ゲストログイン-------
+  def self.guest
+    find_or_create_by!(email: 'guest@example.com') do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "ゲストユーザ"
+    end
+  end
+   #----------------
+
+
+
+# ----検索------
 def self.search(search)
   if search
    User.where(name: "#{search}")
@@ -39,5 +55,5 @@ def self.search(search)
     User.all
   end
 end
-# ここまで
+# --------------
 end

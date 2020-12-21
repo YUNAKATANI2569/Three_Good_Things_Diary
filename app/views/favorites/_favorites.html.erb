@@ -1,0 +1,15 @@
+<% if diary.favorited_by?(current_user) %>
+<li>
+  <%= link_to diary_favorites_path(diary), method: :delete, remote: true do %>
+    <span class="glyphicon glyphicon-heart">
+    <%= diary.favorites.count %> いいね</span>
+  <% end %>
+</li>
+<% else %>
+<li>
+  <%= link_to  diary_favorites_path(diary), method: :post, remote: true do %>
+   <span class="glyphicon glyphicon-heart-empty">
+    <%= diary.favorites.count %> いいね</span>
+  <% end %>
+</li>
+<% end %>

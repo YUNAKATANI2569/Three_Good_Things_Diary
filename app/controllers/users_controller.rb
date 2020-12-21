@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @diary = @user.diaries
   end
 
   def index
@@ -21,7 +22,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to user_path(@user), notice: "You have updated user successfully."
     else
-       @books = @user.books
+
       render action: :edit
     end
   end

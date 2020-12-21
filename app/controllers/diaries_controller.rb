@@ -9,14 +9,15 @@ class DiariesController < ApplicationController
   end
 
   def create
-  diary = Diary.new(diary_params)
+  diary = current_user.diaries.new(diary_params)
+  diary.start_time = DateTime.now
   diary.save
   redirect_to request.referer
   end
 
   def show
   @diary = Diary.find(params[:id])
-  @comment = DiaryComment.new
+  @diary_comment = DiaryComment.new
   end
 
 

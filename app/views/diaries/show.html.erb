@@ -10,45 +10,26 @@
 					<td><%= link_to "Destroy", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_diary_#{@diary.id}" %></td>
        </tr>
 
-
-<% if @diary.favorited_by?(current_user) %>
-<li>
-  <%= link_to diary_favorite_path(@diary), method: :delete do %>
-    <span class="glyphicon glyphicon-heart">
-    <%= @diary.favorites.count %> いいね</span>
-  <% end %>
-</li>
-<% else %>
-<li>
-  <%= link_to  diary_favorites_path(@diary), method: :post do %>
-   <span class="glyphicon glyphicon-heart-empty">
-    <%= @diary.favorites.count %> いいね</span>
-  <% end %>
-</li>
-<% end %>
+　　　　　<!--いいね機能-->
+				<td>
+				<div id="favorites_buttons<%= @diary.id %>">
+				 <%= render partial: 'favorites/favorites', locals: {diary: @diary} %>
+				 </div>
+				</td>
+　　　　<!--ここまで-->
 
 
-    <table>
-      <% @diary.diary_comments.each do |diary_comment| %>
+<!--コメント一覧-->
+ <table class="diary_comments">
+  <%= render 'diary_comments/index',diary: @diary %>
+</table>
+<!--ここまで-->
 
-        <tr>
-        	<td>
-        		<%= link_to user_path(diary_comment.user), class: "user_#{diary_comment.user.id}" do %>
-          		<%= attachment_image_tag diary_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
-          		<%= diary_comment.user.name %>
-        		<% end %>
-        	</td>
-        	<td><%= diary_comment.comment %></td>
-        	<% if current_user == diary_comment.user %>
-          	<td><%= link_to 'Destroy', diary_diary_comment_path(diary_comment.diary_id, diary_comment.id), class: 'btn-sm btn-danger', method: :delete %></td>
-        	<% end %>
-        </tr>
-      <% end %>
-    </table>
 
-    <%= form_with model:[@diary,@comment], local: true do |f| %>
-      <%= f.text_area :comment, size:"90x5" %>
-      <%= f.submit '送信'%>
-    <% end %>
+<!--コメント投稿-->
+ <div>
+	 <%= render partial: 'diary_comments/diary_comments', locals: {diary: @diary, comment: @diary_comment} %>
+</div>
+<!--ここまで-->
 
 

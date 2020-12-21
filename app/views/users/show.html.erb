@@ -11,8 +11,21 @@
         <td><%= "フォロワー数: #{@user.followers.count}" %></td>
 	      <td> <%= render "relationships/follow_button", user: @user %></td>
       </tr>
-
   </tbody>
+		<table>
+<%= month_calendar events: @diary do |date, diaries| %>
+ <%= date.day %>
+
+
+ <% diaries.each do |diary| %>
+
+    <div>
+      <%= link_to diary.body, diary  %>
+    </div>
+  <% end %>
+<% end %>
+
+
 
 
 		</table>

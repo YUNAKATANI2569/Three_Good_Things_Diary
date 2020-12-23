@@ -79,3 +79,5 @@ gem 'byebug'
 gem 'pry-byebug', group: :development
 
 gem 'simple_calendar', '~> 2.0'
+
+gem 'rails-i18n'

@@ -1,23 +1,26 @@
 class DiariesController < ApplicationController
 
   def index
-  @diary = Diary.all
+   @diary = Diary.all
   end
 
   def new
-  @diary = Diary.new
+   @diary = Diary.new
   end
 
   def create
-  diary = current_user.diaries.new(diary_params)
-  diary.start_time = DateTime.now
-  diary.save
-  redirect_to request.referer
+   @diary = current_user.diaries.new(diary_params)
+   @diary.start_time = DateTime.now
+   if @diary.save
+      redirect_to user_path(current_user.id)
+   else
+      render action: :new
+   end
   end
 
   def show
-  @diary = Diary.find(params[:id])
-  @diary_comment = DiaryComment.new
+   @diary = Diary.find(params[:id])
+   @diary_comment = DiaryComment.new
   end
 
 
@@ -27,8 +30,9 @@ class DiariesController < ApplicationController
 
   def update
   @diary = Diary.find(params[:id])
-  Diary.update(Diary_params)
-  redirect_to request.referer
+  Diary.update(diary_params)
+
+  redirect_to diary_path(@diary)
   end
 
   def destroy

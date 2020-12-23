@@ -50,7 +50,8 @@ class User < ApplicationRecord
 # ----検索------
 def self.search(search)
   if search
-   User.where(name: "#{search}")
+   User.where("name LIKE?","%#{search}%")
+
   else
     User.all
   end

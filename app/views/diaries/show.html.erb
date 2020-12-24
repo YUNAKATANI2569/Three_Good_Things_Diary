@@ -4,20 +4,22 @@
 
 
 		<table class="table">
-				<tr>
-					<td><%= @diary.body %></td>
-					<td><%= link_to "Edit", edit_diary_path(@diary), class: "btn-sm btn-success edit_diary_#{@diary.id}" %></td>
-					<td><%= link_to "Destroy", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_diary_#{@diary.id}" %></td>
-       </tr>
+		　<tr>
+			<td><%= @diary.body %></td>
+			<% if @diary.user == current_user %>
+			　<td><%= link_to "Edit", edit_diary_path(@diary), class: "btn-sm btn-success edit_diary_#{@diary.id}" %></td>
+			　<td><%= link_to "Destroy", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_diary_#{@diary.id}" %></td>
+			<% end %>
+      　　　 </tr>
 
-　　　　　<!--いいね機能-->
-				<td>
+<!--いいね機能-->
+			<td>
 				<div id="favorites_buttons<%= @diary.id %>">
 				 <%= render partial: 'favorites/favorites', locals: {diary: @diary} %>
 				 </div>
 				</td>
-　　　　<!--ここまで-->
-
+<!--ここまで-->
+　　　　</table>
 
 <!--コメント一覧-->
  <table class="diary_comments">

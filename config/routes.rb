@@ -19,12 +19,12 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
  end
 
-  resources :diaries do
-  resources :diary_comments, only: [:create, :destroy]
-  resource :favorites, only: [:create, :destroy]
-  end
+ resources :diaries, except: [:index]do
+   resources :diary_comments, only: [:create, :destroy]
+   resource :favorites, only: [:create, :destroy]
+ end
 
-  root 'homes#top'
-  get 'home/about' => 'homes#about', as: 'about'
-  get 'search' => 'searches#search'
+root 'homes#top'
+ get 'home/about' => 'homes#about', as: 'about'
+ get 'search' => 'searches#search'
 end

@@ -1,3 +1,4 @@
+
  <p id="notice">
 <%=  notice %>
 </p>
@@ -8,29 +9,23 @@
       <tr>
        <%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
    				<td><%= @user.name %></td>
-
         <td><%= "フォロー数: #{@user.followings.count}" %></td>
         <td><%= "フォロワー数: #{@user.followers.count}" %></td>
-	      <td> <%= render "relationships/follow_button", user: @user %></td>
-	      <%= link_to 'ユーザ編集', edit_user_path(@user), class: "btn-sm btn-success #{@user.id}" %>
+	       <td> <%= render "relationships/follow_button", user: @user %></td>
+	       <% if user.id == current_user.id %>
+	        <%= link_to 'ユーザ編集', edit_user_path(@user), class: "btn-sm btn-success #{@user.id}" %>
+	       <% end %>
       </tr>
   </tbody>
 		<table>
 <%= month_calendar events: @diary do |date, diaries| %>
  <%= date.day %>
-
-
  <% diaries.each do |diary| %>
-
     <div>
       <%= link_to diary.body, diary  %>
     </div>
   <% end %>
 <% end %>
-
-
-
-
 		</table>
 	</div>
 </div>

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   # ---ゲストログイン----
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    passwords: 'users/passwords'
   }
 
   devise_scope :user do

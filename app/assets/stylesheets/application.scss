@@ -14,6 +14,15 @@
  *= require_self
  */
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #6c6b6b;
+}
+
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -24,18 +33,9 @@ a {
 
 header {
   background-color: #FFCC99 ;;
-  margin-bottom: 90px;
 }
 
-footer {
-  margin-top: 90px;
-  width: 100%;
-  background-color: #FFCC99;
-  text-align: center;
-  position: absolute;
-  bottom: 0;
 
-}
 
 .copy-right {
   color: black;
@@ -55,3 +55,43 @@ footer {
 }
 
 
+.about {/*親div*/
+ position: relative;
+  }
+
+
+
+
+.about img {
+  width: 100%;
+  height: 715px;
+
+  }
+
+
+
+.about p {
+  position: absolute;
+  color: white;/*文字は白に*/
+  font-weight: bold; /*太字に*/
+  font-size: 2em;/*サイズ2倍*/
+  font-family :Quicksand, sans-serif;/*Google Font*/
+ top: 50%;
+  left: 50%;
+
+
+  transform: translate(-50%,-50%);
+  margin:0;
+  padding:0;
+}
+
+
+
+  footer {
+  margin-top: 10px;
+  width: 100%;
+  background-color: #FFCC99;
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+}

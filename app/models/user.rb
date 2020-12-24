@@ -10,6 +10,9 @@ class User < ApplicationRecord
  has_many :diary_comments, dependent: :destroy
  has_many :favorites, dependent: :destroy
 
+  validates :name, length: {maximum: 20 }, presence: true
+  validates :introduction, length:{ maximum: 50 }
+
 
    #-----フォロー機能-------
 

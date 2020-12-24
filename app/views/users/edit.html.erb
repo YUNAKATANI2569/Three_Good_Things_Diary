@@ -1,9 +1,9 @@
-<h2>User info</h2>
+<h2>ユーザ編集</h2>
 
 	<!-- エラーメッセージ表示-->
 	<% if @user.errors.any? %>
 		<div id="error_explanation">
-			<h3><%= @user.errors.count %>error prohibited this obj from being saved:</h3>
+			<h3><%= @user.errors.count %>件 エラー</h3>
 			<ul>
 				<% @user.errors.full_messages.each do |message| %>
 				<li><%= message %></li>

@@ -1,25 +1,33 @@
 
 
+<h2>投稿編集</h>
+<div class="row">
+ <% if @diary.errors.any? %>
+    <div id="error_explanation">
+      <h3><%= pluralize(@diary.errors.count, "件 エラー") %> </h3>
 
-		<h1>投稿編集</h1>
-
+      <ul>
+        <% @diary.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 
 
 <%= form_with model:@diary,url: diary_path(@diary.id), local:true do |f| %>
-
+ <table>
+     <div>
     <%= f.label :日記 %>
-    <%= f.text_field :body, class: 'col-xs-12' %>
-
-
-
-    <%= f.submit class: 'btn btn-primary col-xs-12' %>
-
+    <%= f.text_field :body, size:"90x5" %>
+    <%= f.submit class: 'btn btn-primary size:"90x5' %>
+     </div>
 <% end %>
+</table>
 
 
-
-
-	<div class="col-md-3">
+<div class="col-md-3">
   <%= link_to "戻る", diary_path(@diary) %>
+</div>
 </div>

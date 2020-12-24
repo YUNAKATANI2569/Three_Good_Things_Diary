@@ -1,22 +1,26 @@
 <header>
-   <nav class="bar-left">
+ <div class="container">
+   <nav class="'nav navbar-nav navbar-left-left">
    <%= link_to root_path do%>
    <%= image_tag "55.png" %><font size="6">Three Good Things Diary</font>
    <% end %>
  </nav>
- <div class="container">
 
 
-  <ul class="nav navbar-nav navbar-right">
+
+
    <% if user_signed_in? %>
-   <h5>ようこそ、<%=current_user.name%>さん</h5>
-   <li><%= link_to ' マイページ', user_path(current_user) %></li>
-   <li><%= link_to ' 投稿 ', new_diary_path %></li>
-   <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
-   <%= form_with url:  search_path, method: :get, local: true do |f| %>
-    <%= text_field_tag :search %>
-    <%= submit_tag '検索' %>
-   <% end %>
+    <ul class="nav navbar-nav navbar-center">
+     <h5>ようこそ、<%=current_user.name%>さん</h5>
+    </ul>
+   <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to ' マイページ', user_path(current_user) %></li>
+    <li><%= link_to ' 投稿 ', new_diary_path %></li>
+    <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+    <%= form_with url:  search_path, method: :get, local: true do |f| %>
+     <%= text_field_tag :search %>
+     <%= submit_tag '検索' %>
+    <% end %>
 
   <% else %>
    <li><%= link_to ' About', about_path, class: 'glyphicon glyphicon-link about' %></li>

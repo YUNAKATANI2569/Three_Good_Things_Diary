@@ -13,24 +13,21 @@
 	<!-- エラーメッセージ表示-->
 <div class="form-wrapper">
  <h1>ユーザ編集</h1>
-<%= form_with model:@user,url: user_path(@user.id), local: true do |f| %>
-  <div class="form-item">
-		<%= f.label ：名前 %>
+  <%= form_with model:@user,url: user_path(@user.id), local: true do |f| %>
+   <div class="form-item">
+		<%= f.label :名前 %>
 		<%= f.text_field :name, class: "name" %>
-	</div>
-	<div class="form-item">
+	 </div>
+	 <div class="form-item">
 		<%= f.label :画像 %>
 		<%= f.attachment_field :profile_image, class: "user_image" %>
-	</div>
-	<div class="form-item">
+	 </div>
+	 <div class="form-item">
 		<%= f.label :自己紹介 %>
 		<%= f.text_area :introduction, size:"40x5",class: "introduction　" %>
-	</div>
+	 </div>
 	 <div class="button-panel">
     <input type="submit" class="button" title="Sign In" value="編集"></input>
   </div>
   </div>
-</div>
-
-
 <% end %>

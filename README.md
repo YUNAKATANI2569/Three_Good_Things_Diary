@@ -28,6 +28,19 @@
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1Kz4KN9qmbcPlarJwjebir4Tyx0qwOJlV6TgCfi8gKmU/edit#gid=0
 
+## 使用素材
+
+ilustAC
+https://www.ac-illust.com/
+
+ilustMansion
+https://illustmansion.com/
+
+ぱくたそ
+https://www.pakutaso.com/
+
+
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL

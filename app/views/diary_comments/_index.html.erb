@@ -1,16 +1,23 @@
-
+<table class="table">
+ <thead>
+    <tr>
+      <th>コメント一覧</th>
+    </tr>
+  </thead>
       <% diary.diary_comments.each do |diary_comment| %>
-
         <tr>
         	<td>
         		<%= link_to user_path(diary_comment.user), class: "user_#{diary_comment.user.id}" do %>
           		<%= attachment_image_tag diary_comment.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %><br>
           		<%= diary_comment.user.name %>
+          		<%= diary_comment.created_at.strftime('%Y/%m/%d') %></div>
         		<% end %>
-        	</td>
+        </td>
         	<td><%= diary_comment.comment %></td>
         	<% if current_user == diary_comment.user %>
-          	<td><%= link_to 'Destroy', diary_diary_comment_path(diary_comment.diary_id, diary_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
+          <td><%= link_to 'コメント削除', diary_diary_comment_path(diary_comment.diary_id, diary_comment.id), class: 'btn-sm btn-danger', method: :delete, remote: true %></td>
         	<% end %>
         </tr>
       <% end %>
+
+</table>

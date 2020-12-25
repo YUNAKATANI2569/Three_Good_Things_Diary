@@ -1,33 +1,39 @@
 <header>
  <div class="container">
    <nav class="'nav navbar-nav navbar-left-left">
+    <div class="logo">
+    <div class="site-name">
    <%= link_to root_path do%>
-   <%= image_tag "55.png" %><font size="6">Three Good Things Diary</font>
+   <%= image_tag "55.png" %>
+   <font size="6">Three Good Things Diary</font>
+    </div>
+   </div>
    <% end %>
  </nav>
-
-
-
-
    <% if user_signed_in? %>
     <ul class="nav navbar-nav navbar-center">
      <h5>ようこそ、<%=current_user.name%>さん</h5>
     </ul>
-   <ul class="nav navbar-nav navbar-right">
-    <li><%= link_to ' マイページ', user_path(current_user) %></li>
-    <li><%= link_to ' 投稿 ', new_diary_path %></li>
-    <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout' %></li>
+    <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to ' マイページ', user_path(current_user), class: 'glyphicon glyphicon-home  btn btn-danger navbar-btn' %></li>
+    <li><%= link_to ' 投稿 ', new_diary_path, class: 'glyphicon glyphicon-pencil  btn btn-danger navbar-btn' %></li>
+    <li><%= link_to ' ログアウト', destroy_user_session_path, method: :delete, class: 'glyphicon glyphicon-log-out logout btn btn-danger navbar-btn' %></li>
     <%= form_with url:  search_path, method: :get, local: true do |f| %>
-     <%= text_field_tag :search %>
-     <%= submit_tag '検索' %>
-    <% end %>
+     <%= text_field_tag("search", "",{placeholder: "ユーザー名"}) %>
 
-  <% else %>
-   <li><%= link_to ' About', about_path, class: 'glyphicon glyphicon-link about' %></li>
-   <li><%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in'%></li>
-   <li><%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up' %></li>
+   <%= submit_tag "検索", class: ' btn btn-primary'%>
+  </div>
+    <% end %>
+    </ul>
+   <% else %>
+    <ul class="nav navbar-nav navbar-right">
+
+   <li><%= link_to ' ログイン', new_user_session_path, class: 'glyphicon glyphicon-log-in sign_in btn-danger navbar-btn'%></li>
+   <li><%= link_to ' 新規登録', new_user_registration_path, class: 'glyphicon glyphicon-edit sign_up btn-danger navbar-btn' %></li>
+   <li><%= link_to ' このサイトについて', about_path, class: 'glyphicon glyphicon-question-sign about btn-danger navbar-btn' %></li>
   </ul>
   <% end %>
+  </div>
   </div>
 </header>
 

@@ -23,20 +23,25 @@ class DiariesController < ApplicationController
 
 
   def edit
-  @diary = Diary.find(params[:id])
+   @diary = Diary.find(params[:id])
+   if current_user.id !=  @diary.user_id
+    redirect_to diary_path(@diary)
+   end
   end
 
   def update
-  @diary = Diary.find(params[:id])
-  Diary.update(diary_params)
-
-  redirect_to diary_path(@diary)
+   @diary = Diary.find(params[:id])
+   if @diary.update(diary_params)
+      redirect_to diary_path(@diary), notice: "更新に成功しました。"
+   else
+      render "edit"
+   end
   end
 
   def destroy
     @diary = Diary.find(params[:id])
     @diary.destroy
-    redirect_to diary_path
+    redirect_to user_path(current_user.id)
   end
 
 

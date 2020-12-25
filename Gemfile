@@ -79,5 +79,3 @@ gem 'byebug'
 gem 'pry-byebug', group: :development
 
 gem 'simple_calendar', '~> 2.0'
-
-

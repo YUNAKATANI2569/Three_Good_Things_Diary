@@ -1,21 +1,38 @@
+<div class="container">
 
  <p id="notice">
 <%=  notice %>
 </p>
 <div class="row">
 	<div class="col-xs-9">
-		<table>
+	<table>
   <tbody>
-      <tr>
+    <tr>
+      <td>
        <%= attachment_image_tag(@user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg") %>
-   				<td><%= @user.name %></td>
-        <td><%= "フォロー数: #{@user.followings.count}" %></td>
-        <td><%= "フォロワー数: #{@user.followers.count}" %></td>
-	       <td> <%= render "relationships/follow_button", user: @user %></td>
-	       <% if @user.id == current_user.id %>
-	        <%= link_to 'ユーザ編集', edit_user_path(@user), class: "btn-sm btn-success #{@user.id}" %>
-	       <% end %>
-      </tr>
+      </td>
+    </tr>
+   		<tr>
+   			<td>ユーザー名 ：<%= @user.name %></td>
+   		</tr>
+  </table>
+   <table class="table">
+   	<tr>
+   		<td> 自己紹介 : <%= @user.introduction %></td>
+   	</tr>
+  </table>
+ 	<table>
+   <% if @user.id == current_user.id %>
+	  <tr><td><%= link_to 'ユーザ編集', edit_user_path(@user), class: "btn-sm btn-success #{@user.id}" %></td></tr>
+	  <% end %>
+	  <tr>
+     <th>フォロー数    ：<%= link_to @user.followings.count, user_followings_path(@user) %></th>
+   </tr>
+   <tr>
+    <th>フォロワー数 ：<%= link_to @user.followers.count, user_followers_path(@user) %></th>
+   </tr>
+	   <td> <%= render "relationships/follow_button", user: @user %></td>
+ </table>
   </tbody>
 		<table>
 <%= month_calendar events: @diary do |date, diaries| %>
@@ -28,4 +45,5 @@
 <% end %>
 		</table>
 	</div>
+</div>
 </div>

@@ -1,9 +1,12 @@
+   <div class="container">
    <tbody>
+    <h2>ユーザー検索結果</h2>
     <% @user.each do |user| %>
-     <tr>
-      <td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
-      <td><%= user.name%></td>
-      <td><%= link_to "Show", user, class: "user_#{user.id}" %></td>
-     </tr>
+     　<tr>
+      　<td><%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg") %></td>
+      　<td><%= user.name%></td>
+      　<td><%= link_to "詳細", user_path(user), class: "btn btn-primary" %></td>
+     　</tr>
     <% end %>
    </tbody>
+   </div>

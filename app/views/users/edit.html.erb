@@ -1,6 +1,5 @@
-<h2>ユーザ編集</h2>
 
-	<!-- エラーメッセージ表示-->
+		<!-- エラーメッセージ表示-->
 	<% if @user.errors.any? %>
 		<div id="error_explanation">
 			<h3><%= @user.errors.count %>件 エラー</h3>
@@ -12,30 +11,36 @@
 		</div>
 	<% end %>
 	<!-- エラーメッセージ表示-->
-
+<div class="form-wrapper">
+ <h1>ユーザ編集</h1>
 
 
 <%= form_with model:@user,url: user_path(@user.id), local: true do |f| %>
 
-
-
-	<div class="field">
+  <div class="form-item">
 		<%= f.label :name %>
 		<%= f.text_field :name, class: "name" %>
 	</div>
 
-	<div class="field">
+	<div class="form-item">
 		<%= f.label :image %>
 		<%= f.attachment_field :profile_image, class: "user_image" %>
 	</div>
 
-	<div class="field">
+	<div class="form-item">
 		<%= f.label :introduction %>
-		<%= f.text_area :introduction, class: "introduction" %>
+		<%= f.text_area :introduction, size:"40x5",class: "introduction　" %>
 	</div>
 
-	<div class="actions">
-		<%= f.submit %>
-	</div>
+	 <div class="button-panel">
+    <input type="submit" class="button" title="Sign In" value="編集"></input>
+  </div>
+
+
+
+
+  </div>
+</div>
+
 
 <% end %>

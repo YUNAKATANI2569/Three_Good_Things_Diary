@@ -26,6 +26,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+
 a {
   color: black
 }
@@ -64,7 +65,7 @@ header {
 
 .about img {
   width: 100%;
-  height: 715px;
+  height: 816px;
 
   }
 
@@ -72,14 +73,12 @@ header {
 
 .about p {
   position: absolute;
-  color: white;/*文字は白に*/
-  font-weight: bold; /*太字に*/
-  font-size: 2em;/*サイズ2倍*/
-  font-family :Quicksand, sans-serif;/*Google Font*/
- top: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 2em;
+  font-family :Quicksand, sans-serif;
+  top: 50%;
   left: 50%;
-
-
   transform: translate(-50%,-50%);
   margin:0;
   padding:0;
@@ -97,7 +96,30 @@ header {
 }
 
 
+
+@import url('https://fonts.googleapis.com/css?family=Sawarabi+Mincho');
+.site-name{
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+
 nav {
   width: 500px;
-
 }
+
+
+
+.top {
+  background: #fafafa;
+  margin: 3em auto;
+  padding: 0 1em;
+  max-width: 500px;
+}
+
+
+.top  h2{
+  font-family:"Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+  text-align: center;
+  padding: 1em 0;
+}
+

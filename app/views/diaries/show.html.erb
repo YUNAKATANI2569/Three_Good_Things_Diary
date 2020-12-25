@@ -1,38 +1,31 @@
- <p id="notice">
+<p id="notice">
 <%=  notice %>
 </p>
-
-
+  <div class="container">
 		<table class="table">
 		　<tr>
 			<td><%= @diary.body %></td>
-			<% if @diary.user == current_user %>
-			　<td><%= link_to "Edit", edit_diary_path(@diary), class: "btn-sm btn-success edit_diary_#{@diary.id}" %></td>
-			　<td><%= link_to "Destroy", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_diary_#{@diary.id}" %></td>
-			<% end %>
-      　　　 </tr>
-
-<!--いいね機能-->
-			<td>
+			 <th>
 				<div id="favorites_buttons<%= @diary.id %>">
 				 <%= render partial: 'favorites/favorites', locals: {diary: @diary} %>
 				 </div>
-				</td>
-<!--ここまで-->
-　　　　</table>
-
-<!--コメント一覧-->
- <table class="diary_comments">
-  <%= render 'diary_comments/index',diary: @diary %>
-</table>
-<!--ここまで-->
-
-
-<!--コメント投稿-->
-
- <div>
-	 <%= render partial: 'diary_comments/diary_comments', locals: {diary: @diary, comment: @diary_comment} %>
-</div>
-<!--ここまで-->
+			　</th>
+			<% if @diary.user == current_user %>
+			　<td><%= link_to "編集", edit_diary_path(@diary), class: "btn-sm btn-success edit_diary_#{@diary.id}" %></td>
+			　<td><%= link_to "削除", diary_path(@diary), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_diary_#{@diary.id}" %></td>
+     　　　　 <% end %>
+	　　</tr>
+　      </table>
+      <!--コメント一覧-->
+     <div class="diary_comments">
+      <%= render 'diary_comments/index',diary: @diary %>
+     </div>
+      <!--ここまで-->
+      <!--コメント投稿-->
+      <div>
+	   <%= render partial: 'diary_comments/diary_comments', locals: {diary: @diary, comment: @diary_comment} %>
+      </div>
+       <!--ここまで-->
+   </div>
 
 
